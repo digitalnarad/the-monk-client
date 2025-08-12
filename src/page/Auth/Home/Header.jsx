@@ -1,7 +1,11 @@
-import { Palette } from "lucide-react";
+import { Palette, ShoppingCart } from "lucide-react";
 import { Button } from "../../../component/button";
+import { Link, useNavigate } from "react-router-dom";
+import { ModeToggle } from "./ModeToggle";
 
 function Header() {
+  const navigate = useNavigate();
+  const itemCount = 0;
   return (
     <header className="glass-effect sticky top-0 z-50 border-b border-white/10 backdrop-blur">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -19,31 +23,61 @@ function Header() {
             href="#gallery"
             className="relative text-foreground hover:text-primary transition-all duration-300 group"
           >
+            Home
+            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a
+            href="#gallery"
+            className="relative text-foreground hover:text-primary transition-all duration-300 group"
+          >
             Gallery
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
           <a
-            href="#about"
             className="relative text-foreground hover:text-primary transition-all duration-300 group"
+            onClick={(e) => {
+              navigate("/collection");
+            }}
           >
-            About
-            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-          </a>
-          <a
-            href="#contact"
-            className="relative text-foreground hover:text-primary transition-all duration-300 group"
-          >
-            Contact
+            collections
             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
           </a>
         </nav>
-        <Button
-          variant="outline"
-          className="relative overflow-hidden border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
-        >
-          <span className="relative z-10">Shop Now</span>
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
-        </Button>
+        <div className="flex items-center space-x-4">
+          <ModeToggle />
+          <Button
+            variant="outline"
+            size="icon"
+            asChild
+            className="relative glass-effect border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+          >
+            <Link to="/cart">
+              <ShoppingCart className="h-5 w-5" />
+              {itemCount > 0 && (
+                <Badge
+                  variant="destructive"
+                  className="absolute -top-3 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs min-w-5"
+                >
+                  {itemCount}
+                </Badge>
+              )}
+            </Link>
+          </Button>
+          <Button
+            variant="outline"
+            className="relative overflow-hidden border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
+          >
+            <span className="relative z-10">Login</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+          </Button>
+          <Button
+            variant="outline"
+            className="relative overflow-hidden border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
+          >
+            <span className="relative z-10">SignIn</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
+          </Button>
+        </div>
       </div>
     </header>
   );

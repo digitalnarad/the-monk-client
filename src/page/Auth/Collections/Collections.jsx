@@ -119,7 +119,7 @@ const Collections = () => {
           {categories.map((category) => {
             const IconComponent = category.icon;
             return (
-              <Link key={category.id} to={`/category/${category.id}`}>
+              <Link key={category.id} to={`/collection/${category.id}`}>
                 <Card className="group h-full glass-effect hover:shadow-2xl hover:shadow-primary/20 transition-all duration-500 hover:-translate-y-2 overflow-hidden border-border/50">
                   <div
                     className={`absolute inset-0 bg-gradient-to-br ${category.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}

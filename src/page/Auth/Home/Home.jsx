@@ -2,6 +2,9 @@ import { Shield, Star, Truck } from "lucide-react";
 import { Button } from "../../../component/button";
 import { Badge } from "../../../component/badge";
 import { Card, CardContent } from "../../../component/card";
+import ShinyText from "../../../component/animation/ShinyText";
+import TextType from "../../../component/animation/TextType";
+import GradientText from "../../../component/animation/GradientText";
 
 function Home() {
   return (
@@ -33,11 +36,11 @@ function Home() {
 
             <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight">
               <span className="bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-                Transform Your Space
+                Add a splash of color!
               </span>
               <br />
               <span className="relative inline-block">
-                <span className="text-foreground">with Digital Art</span>
+                <span className="text-foreground">With Digital Art</span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-accent/20 blur-2xl -z-10 scale-110"></div>
               </span>
             </h1>

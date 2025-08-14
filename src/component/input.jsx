@@ -102,7 +102,7 @@ const GalleryInput = React.forwardRef(
               onBlur={handleInputBlur}
               onChange={handleInputChange}
               className={cn(
-                "w-full h-12 bg-transparent border-0 outline-0 text-base text-foreground placeholder-transparent border-b border-border/30 transition-all duration-300 autofill-transparent",
+                "w-full h-12 bg-transparent border-0 outline-0 text-base text-foreground placeholder-transparent border-b border-primary transition-all duration-300 autofill-transparent",
                 icon ? "pl-10" : "pl-0",
                 focused && "border-primary"
               )}

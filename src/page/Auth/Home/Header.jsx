@@ -1,4 +1,4 @@
-import { Palette, ShoppingCart } from "lucide-react";
+import { LogIn, Palette, ShoppingCart, Store } from "lucide-react";
 import { Button } from "../../../component/button";
 import { Link, useNavigate } from "react-router-dom";
 import { ModeToggle } from "./ModeToggle";
@@ -50,8 +50,11 @@ function Header() {
             size="icon"
             asChild
             className="relative glass-effect border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
+            onClick={() => {
+              navigate("/cart");
+            }}
           >
-            <Link to="/cart">
+            <div style={{ cursor: "pointer" }}>
               <ShoppingCart className="h-5 w-5" />
               {itemCount > 0 && (
                 <Badge
@@ -61,20 +64,25 @@ function Header() {
                   {itemCount}
                 </Badge>
               )}
-            </Link>
+            </div>
           </Button>
           <Button
             variant="outline"
             className="relative overflow-hidden border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
+            onClick={() => {
+              navigate("/signin");
+            }}
           >
+            <LogIn />
             <span className="relative z-10">Login</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
           </Button>
           <Button
-            variant="outline"
-            className="relative overflow-hidden border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300 group"
+            variant="default"
+            className="relative overflow-hidden border-primary/30 transition-all duration-300 group"
           >
-            <span className="relative z-10">SignIn</span>
+            <Store />
+            <span className="relative z-10">Shop Now</span>
             <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
           </Button>
         </div>

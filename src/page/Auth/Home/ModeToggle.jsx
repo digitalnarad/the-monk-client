@@ -23,7 +23,7 @@ export function ModeToggle() {
             hover:border-primary hover:shadow-lg hover:shadow-primary/20
             transition-all duration-300
             focus-visible:outline-none focus-visible:ring-0
-            data-[state=open]:border-primary data-[state=open]:shadow-lg data-[state=open]:shadow-primary/20 
+            data-[state=open]:border-primary data-[state=open]:shadow-lg data-[state=open]:shadow-primary/20  data-[state=open]:bg-primary/10
           "
         >
           <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
@@ -41,7 +41,9 @@ export function ModeToggle() {
         >
           <Sun className="mr-2 h-4 w-4" />
           Light
-          {theme === "light" && <Check className="ml-auto h-4 w-4" />}
+          {theme === "light" && (
+            <Check className="ml-auto h-4 w-4 text-accent-foreground" />
+          )}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("dark")}
@@ -49,7 +51,9 @@ export function ModeToggle() {
         >
           <Moon className="mr-2 h-4 w-4" />
           Dark
-          {theme === "dark" && <Check className="ml-auto h-4 w-4" />}
+          {theme === "dark" && (
+            <Check className="ml-auto h-4 w-4 text-accent-foreground" />
+          )}
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => setTheme("system")}
@@ -57,7 +61,9 @@ export function ModeToggle() {
         >
           <MonitorCheck className="mr-2 h-4 w-4" />
           System
-          {theme === "system" && <Check className="ml-auto h-4 w-4" />}
+          {theme === "system" && (
+            <Check className="ml-auto h-4 w-4 text-accent-foreground" />
+          )}
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

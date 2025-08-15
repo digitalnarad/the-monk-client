@@ -152,9 +152,10 @@ const Auth = ({ initialMode }) => {
 
             {/* Your existing features - unchanged */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
-                  <Zap className="h-6 w-6 text-primary" />
+              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group transform hover:-translate-y-2 hover:scale-105">
+                <div className="relative glass-effect w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
+                  <Zap className="h-6 w-6 text-primary " />
+                  {/* <div className="absolute glass-effect top-0 left-0 rounded-xl w-full h-full opacity-0 group-hover:opacity-100 group-hover:animate-spin-clockwise-360-infinite-slow transition-all duration-300"></div> */}
                 </div>
                 <h3 className="font-semibold mb-2">Instant Access</h3>
                 <p className="text-sm text-muted-foreground">
@@ -162,9 +163,9 @@ const Auth = ({ initialMode }) => {
                 </p>
               </div>
 
-              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
-                  <Star className="h-6 w-6 text-primary" />
+              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
+                <div className="relative glass-effect w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
+                  <Star className="h-6 w-6 text-primary group-hover:animate-spin-clockwise-360-infinite-slow transition-all duration-300" />
                 </div>
                 <h3 className="font-semibold mb-2">Premium Quality</h3>
                 <p className="text-sm text-muted-foreground">
@@ -172,8 +173,8 @@ const Auth = ({ initialMode }) => {
                 </p>
               </div>
 
-              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
+              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
+                <div className="w-12 h-12 relative glass-effect bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
                 <h3 className="font-semibold mb-2">Full License</h3>
@@ -289,7 +290,7 @@ const Auth = ({ initialMode }) => {
                               checked={formik.values.termsAccepted}
                               onChange={formik.handleChange}
                               onBlur={formik.handleBlur}
-                              className="w-4 h-4 text-primary bg-transparent border-2 border-border/30 rounded focus:ring-primary focus:ring-2 transition-all duration-300"
+                              className="w-4 h-4 text-primary bg-transparent transition-all duration-300"
                             />
                             <Label
                               htmlFor="termsAccepted"
@@ -313,9 +314,9 @@ const Auth = ({ initialMode }) => {
                           </div>
                           {formik.touched.termsAccepted &&
                             formik.errors.termsAccepted && (
-                              <p className="text-red-500 text-xs mt-1">
+                              <li className="text-accent-foreground text-xs mt-0 text-left P-0 M-0 text-shadow">
                                 {formik.errors.termsAccepted}
-                              </p>
+                              </li>
                             )}
                         </div>
                       </div>
@@ -325,7 +326,7 @@ const Auth = ({ initialMode }) => {
                   {/* Your existing button - unchanged */}
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-primary to-primary/40 hover:from-primary hover:to-primary text-primary-foreground font-medium py-6 rounded-xl text-lg transition-all duration-300 hover:translate-y-[-2px] hover:shadow-lg hover:shadow-primary/20 glow-effect transform active:scale-95"
+                    className="relative overflow-hidden border-primary/30 transition-all duration-300 group w-full"
                     disabled={formik.isSubmitting}
                   >
                     {formik.isSubmitting ? (
@@ -340,6 +341,7 @@ const Auth = ({ initialMode }) => {
                     ) : (
                       "Create Account"
                     )}
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/10 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                   </Button>
 
                   {/* Your existing toggle - unchanged */}

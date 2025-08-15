@@ -85,10 +85,17 @@ export default {
             height: "0",
           },
         },
+        "spin-clockwise-360": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        // Your new animation class
+        "spin-clockwise-360-infinite-slow":
+          "spin-clockwise-360 3s linear infinite",
       },
     },
   },

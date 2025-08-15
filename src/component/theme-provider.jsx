@@ -9,7 +9,7 @@ const ThemeProviderContext = createContext({
 export function ThemeProvider({
   children,
   defaultTheme = "system",
-  storageKey = "lovable-ui-theme",
+  storageKey = "",
   ...props
 }) {
   const [theme, setTheme] = useState(

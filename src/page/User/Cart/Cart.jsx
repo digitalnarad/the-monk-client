@@ -16,10 +16,10 @@ import {
 } from "../../../component/card";
 import { Button } from "../../../component/button";
 import { Badge } from "../../../component/badge";
-import { Separator } from "../../../component/separator";
+import { Separator } from "../../../component/Separator";
 
 const Cart = () => {
-  const { state, updateQuantity, removeItem, clearCart } = {};
+  const { state } = {};
   const navigate = useNavigate();
 
   const handleCheckout = () => {

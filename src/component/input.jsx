@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { cn } from "../utils.js/helper";
+import { Eye, EyeClosed, EyeOff, Zap } from "lucide-react";
+import { Button } from "./button";
 
 // Your existing Input component - unchanged
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
@@ -20,9 +22,11 @@ Input.displayName = "Input";
 
 // Fixed GalleryInput - resolves label overlap issue
 const GalleryInput = React.forwardRef(
-  ({ className, label, error, icon, value, ...props }, ref) => {
+  ({ className, label, error, icon, value, type, ...props }, ref) => {
     const [focused, setFocused] = useState(false);
     const [hasValue, setHasValue] = useState(false);
+
+    const [visiblePassword, setVisiblePassword] = useState(false);
 
     // Check for value on every render and value prop change
     useEffect(() => {
@@ -68,12 +72,12 @@ const GalleryInput = React.forwardRef(
     const shouldShowLabel = focused || hasValue || (value && value.length > 0);
 
     return (
-      <div className={cn("space-y-2", className)}>
+      <div className={cn("space-y-1", className)}>
         <div className="relative">
           {/* Floating Label - Fixed positioning logic */}
           <div
             className={cn(
-              "absolute left-0 text-xs font-medium tracking-wide transition-all duration-300 uppercase text-primary",
+              "absolute left-0 text-xs font-medium tracking-wide transition-all duration-300 uppercase text-primary ",
               shouldShowLabel
                 ? "opacity-100 translate-y-[-20px]"
                 : "opacity-0 translate-y-[-10px]"
@@ -98,16 +102,43 @@ const GalleryInput = React.forwardRef(
               ref={ref}
               value={value}
               {...props}
+              type={
+                type === "password" && !visiblePassword ? "password" : "text"
+              }
               onFocus={handleInputFocus}
               onBlur={handleInputBlur}
               onChange={handleInputChange}
               className={cn(
-                "w-full h-12 bg-transparent border-0 outline-0 text-base text-foreground placeholder-transparent border-b border-primary transition-all duration-300 autofill-transparent",
+                "w-full h-10 bg-transparent border-0 outline-0 text-base text-foreground placeholder-transparent border-b border-primary transition-all duration-300 autofill-transparent",
                 icon ? "pl-10" : "pl-0",
+                type === "password" ? "pr-10" : "pr-0",
                 focused && "border-primary"
               )}
               placeholder={label}
             />
+
+            {type === "password" && (
+              <Button
+                variant="ghost"
+                size="icon"
+                asChild
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 transition-all duration-300 data-[state=open]:text-primary"
+                onClick={() => setVisiblePassword(!visiblePassword)}
+              >
+                <div style={{ cursor: "pointer" }}>
+                  <Eye
+                    className={`absolute rotate-0 scale-0 transition-all duration-300 ${
+                      !visiblePassword && "-rotate-180 scale-100"
+                    }`}
+                  />
+                  <EyeOff
+                    className={` absolute rotate-0 scale-0 transition-all duration-300 ${
+                      visiblePassword && "-rotate-180 scale-100"
+                    }`}
+                  />
+                </div>
+              </Button>
+            )}
 
             {/* Floating Placeholder - Only show when NO value */}
             {!shouldShowLabel && (
@@ -133,7 +164,9 @@ const GalleryInput = React.forwardRef(
 
         {/* Error Display */}
         {error && (
-          <p className="text-red-500 text-xs mt-1 text-left">{error}</p>
+          <li className="text-accent-foreground text-xs mt-0 text-left P-0 M-0">
+            {error}
+          </li>
         )}
 
         {/* Autofill Styles */}

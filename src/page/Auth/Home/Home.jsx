@@ -45,7 +45,7 @@ function Home() {
               </span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed ">
               Discover stunning digital artwork ready to print on canvas.
               High-quality designs that bring life to any room with artistic
               elegance.

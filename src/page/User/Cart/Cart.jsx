@@ -16,7 +16,6 @@ import {
 } from "../../../component/card";
 import { Button } from "../../../component/button";
 import { Badge } from "../../../component/badge";
-import { Separator } from "../../../component/Separator";
 
 const Cart = () => {
   const { state } = {};
@@ -109,9 +108,9 @@ const Cart = () => {
           Continue Shopping
         </Button>
 
-        <div className="w-full">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Cart Items */}
-          <div className="w-full">
+          <div className="w-full col-span-1">
             <Card className="glass-effect border-primary/20 w-full">
               <CardHeader>
                 <CardTitle className="flex items-center gap-3 text-2xl">
@@ -216,7 +215,7 @@ const Cart = () => {
                     ))}
 
                     {/* Clear Cart Button */}
-                    {(state?.items || []).length > 0 && (
+                    {item.length > 0 && (
                       <div className="pt-4 border-t border-border/20">
                         <Button
                           variant="outline"
@@ -235,8 +234,8 @@ const Cart = () => {
           </div>
 
           {/* Order Summary */}
-          {(state?.items || []).length > 0 && (
-            <div className="lg:col-span-1">
+          {item.length > 0 && (
+            <div className="lg:col-span-1 col-span-2">
               <Card className="glass-effect border-primary/20 sticky top-24">
                 <CardHeader>
                   <CardTitle className="text-xl">Order Summary</CardTitle>
@@ -244,7 +243,7 @@ const Cart = () => {
                 <CardContent className="space-y-4">
                   {/* Items Breakdown */}
                   <div className="space-y-3">
-                    {state.items.map((item) => (
+                    {item.map((item) => (
                       <div
                         key={item.id}
                         className="flex justify-between text-sm"
@@ -259,13 +258,11 @@ const Cart = () => {
                     ))}
                   </div>
 
-                  <Separator className="bg-border/20" />
-
                   {/* Totals */}
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Subtotal</span>
-                      <span>${state.total.toFixed(2)}</span>
+                      <span>${(item?.total || 0).toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">
@@ -279,12 +276,10 @@ const Cart = () => {
                     </div>
                   </div>
 
-                  <Separator className="bg-border/20" />
-
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total</span>
                     <span className="text-primary">
-                      ${state.total.toFixed(2)}
+                      ${(item?.total || 0).toFixed(2)}
                     </span>
                   </div>
 

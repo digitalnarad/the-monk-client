@@ -236,4 +236,37 @@
   .select-none {
     user-select: none;
   }
+
+  .enhanced-card-effect {
+    position: relative;
+    overflow: hidden;
+  }
+  .enhanced-card-effect::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(138, 44, 226, 0.08) 50%,
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .enhanced-card-effect:hover::before {
+    opacity: 1;
+  }
+  .dark .enhanced-card-effect::before {
+    background: linear-gradient(
+      45deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.03) 50%,
+      transparent 70%
+    );
+  }
 }

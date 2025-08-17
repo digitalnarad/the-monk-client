@@ -120,23 +120,21 @@ const GalleryInput = React.forwardRef(
             {type === "password" && (
               <Button
                 variant="ghost"
+                type="button"
                 size="icon"
-                asChild
                 className="absolute top-1/2 right-0 transform -translate-y-1/2 transition-all duration-300 data-[state=open]:text-primary"
                 onClick={() => setVisiblePassword(!visiblePassword)}
               >
-                <div style={{ cursor: "pointer" }}>
-                  <Eye
-                    className={`absolute rotate-0 scale-0 transition-all duration-300 ${
-                      !visiblePassword && "-rotate-180 scale-100"
-                    }`}
-                  />
-                  <EyeOff
-                    className={` absolute rotate-0 scale-0 transition-all duration-300 ${
-                      visiblePassword && "-rotate-180 scale-100"
-                    }`}
-                  />
-                </div>
+                <Eye
+                  className={`absolute rotate-0 scale-0 transition-all duration-300 ${
+                    !visiblePassword && "-rotate-180 scale-100"
+                  }`}
+                />
+                <EyeOff
+                  className={` absolute rotate-0 scale-0 transition-all duration-300 ${
+                    visiblePassword && "-rotate-180 scale-100"
+                  }`}
+                />
               </Button>
             )}
 

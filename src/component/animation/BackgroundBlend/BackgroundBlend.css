@@ -1,0 +1,308 @@
+/* Background Blend Integration */
+.background-blend {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Perfect Integration Layer */
+.integration-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blend-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+  mix-blend-mode: soft-light;
+  animation: blendFlow 20s ease-in-out infinite;
+}
+
+.integration-layer.light .blend-gradient {
+  background: linear-gradient(
+    45deg,
+    hsl(271 76% 96%) 0%,
+    hsl(262 83% 97%) 25%,
+    hsl(233 89% 96%) 50%,
+    hsl(271 76% 97%) 75%,
+    hsl(262 83% 96%) 100%
+  );
+}
+
+.integration-layer.dark .blend-gradient {
+  background: linear-gradient(
+    45deg,
+    hsl(271 76% 8%) 0%,
+    hsl(262 83% 7%) 25%,
+    hsl(233 89% 8%) 50%,
+    hsl(271 76% 7%) 75%,
+    hsl(262 83% 8%) 100%
+  );
+}
+
+.harmony-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.15;
+  mix-blend-mode: overlay;
+  animation: harmonyPulse 15s ease-in-out infinite;
+}
+
+.integration-layer.light .harmony-overlay {
+  background: radial-gradient(
+    ellipse at 30% 70%,
+    hsl(271 76% 90%) 0%,
+    transparent 60%
+  ),
+  radial-gradient(
+    ellipse at 70% 30%,
+    hsl(262 83% 90%) 0%,
+    transparent 60%
+  );
+}
+
+.integration-layer.dark .harmony-overlay {
+  background: radial-gradient(
+    ellipse at 30% 70%,
+    hsl(271 76% 20%) 0%,
+    transparent 60%
+  ),
+  radial-gradient(
+    ellipse at 70% 30%,
+    hsl(262 83% 18%) 0%,
+    transparent 60%
+  );
+}
+
+.depth-enhancement {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.08;
+  mix-blend-mode: multiply;
+  animation: depthPulse 25s ease-in-out infinite;
+}
+
+.integration-layer.light .depth-enhancement {
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    hsl(271 76% 95%) 0deg,
+    hsl(262 83% 96%) 60deg,
+    hsl(233 89% 95%) 120deg,
+    hsl(271 76% 96%) 180deg,
+    hsl(262 83% 95%) 240deg,
+    hsl(233 89% 96%) 300deg,
+    hsl(271 76% 95%) 360deg
+  );
+}
+
+.integration-layer.dark .depth-enhancement {
+  background: conic-gradient(
+    from 180deg at 50% 50%,
+    hsl(271 76% 12%) 0deg,
+    hsl(262 83% 10%) 60deg,
+    hsl(233 89% 12%) 120deg,
+    hsl(271 76% 10%) 180deg,
+    hsl(262 83% 12%) 240deg,
+    hsl(233 89% 10%) 300deg,
+    hsl(271 76% 12%) 360deg
+  );
+}
+
+/* Subtle Enhancement Effects */
+.enhancement-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.color-harmony {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  mix-blend-mode: color;
+  animation: colorShift 30s linear infinite;
+}
+
+.enhancement-layer.light .color-harmony {
+  background: linear-gradient(
+    120deg,
+    hsl(271 76% 85%) 0%,
+    hsl(262 83% 88%) 50%,
+    hsl(233 89% 85%) 100%
+  );
+}
+
+.enhancement-layer.dark .color-harmony {
+  background: linear-gradient(
+    120deg,
+    hsl(271 76% 25%) 0%,
+    hsl(262 83% 22%) 50%,
+    hsl(233 89% 25%) 100%
+  );
+}
+
+.contrast-balance {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  mix-blend-mode: luminosity;
+  animation: contrastFlow 35s ease-in-out infinite;
+}
+
+.enhancement-layer.light .contrast-balance {
+  background: radial-gradient(
+    circle at 50% 50%,
+    hsl(0 0% 98%) 0%,
+    hsl(0 0% 96%) 40%,
+    transparent 70%
+  );
+}
+
+.enhancement-layer.dark .contrast-balance {
+  background: radial-gradient(
+    circle at 50% 50%,
+    hsl(0 0% 8%) 0%,
+    hsl(0 0% 6%) 40%,
+    transparent 70%
+  );
+}
+
+.visual-flow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.02;
+  mix-blend-mode: screen;
+  animation: visualFlow 40s linear infinite;
+}
+
+.enhancement-layer.light .visual-flow {
+  background: 
+    linear-gradient(45deg, transparent 48%, hsl(271 76% 90% / 0.5) 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, hsl(262 83% 90% / 0.5) 50%, transparent 52%);
+  background-size: 100px 100px, 120px 120px;
+}
+
+.enhancement-layer.dark .visual-flow {
+  background: 
+    linear-gradient(45deg, transparent 48%, hsl(271 76% 20% / 0.6) 50%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, hsl(262 83% 18% / 0.6) 50%, transparent 52%);
+  background-size: 100px 100px, 120px 120px;
+}
+
+/* Animations */
+@keyframes blendFlow {
+  0%, 100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-1px) translateY(-2px) rotate(0.5deg);
+  }
+  50% {
+    transform: translateX(1px) translateY(1px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateX(-0.5px) translateY(-1px) rotate(0.3deg);
+  }
+}
+
+@keyframes harmonyPulse {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.18;
+    transform: scale(1.02);
+  }
+}
+
+@keyframes depthPulse {
+  0%, 100% {
+    opacity: 0.06;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0.1;
+    transform: rotate(1deg);
+  }
+}
+
+@keyframes colorShift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(-10px) translateY(-5px);
+  }
+  50% {
+    transform: translateX(10px) translateY(10px);
+  }
+  75% {
+    transform: translateX(-5px) translateY(-10px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes contrastFlow {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.05) translateY(-5px);
+  }
+}
+
+@keyframes visualFlow {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 100px 100px, -120px 120px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .visual-flow {
+    background-size: 60px 60px, 80px 80px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .background-blend * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

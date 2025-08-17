@@ -19,6 +19,10 @@ import { Button } from "../../component/button";
 import { Label } from "../../component/label";
 import { Badge } from "../../component/badge";
 import { GalleryInput } from "../../component/input";
+import ArtGalleryBackground from "../../component/animation/ArtGalleryBackground";
+import AuthBackground from "../../component/animation/AuthBackground/AuthBackground";
+import MinimalisticBackground from "../../component/animation/MinimalisticBackground/MinimalisticBackground";
+import BackgroundBlend from "../../component/animation/BackgroundBlend";
 
 // Your existing validation schemas
 const signInSchema = Yup.object({
@@ -91,11 +95,18 @@ const Auth = ({ initialMode }) => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen  relative">
+      {/* Art Gallery Minimalistic Background */}
+
+      <div className="absolute top-0 left-0 w-full h-full z-[-1]">
+        <MinimalisticBackground />
+        <ArtGalleryBackground />
+      </div>
+
       {/* Your existing header - unchanged */}
       <header
-        className="glass-effect border-b border-white/10"
-        style={{ height: "5rem" }}
+        className=""
+        style={{ height: "5rem", backdropFilter: `blur(8px) saturate(180%)` }}
       >
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-3 group">
@@ -104,7 +115,7 @@ const Auth = ({ initialMode }) => {
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-              ArtCanvas
+              The Monk Lab
             </span>
           </Link>
           <div className="flex items-center gap-4">
@@ -132,7 +143,7 @@ const Auth = ({ initialMode }) => {
                 variant="secondary"
                 className="mb-6 px-4 py-2 glass-effect border-primary/30 text-primary"
               >
-                ✨ Join ArtCanvas Community
+                ✨ Join The Monk Lab Community
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
@@ -140,7 +151,7 @@ const Auth = ({ initialMode }) => {
                 </span>
                 <br />
                 <span className="text-foreground">
-                  {mode === "signin" ? "to ArtCanvas" : "with Digital Art"}
+                  {mode === "signin" ? "to The Monk Lab" : "with Digital Art"}
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -152,7 +163,7 @@ const Auth = ({ initialMode }) => {
 
             {/* Your existing features - unchanged */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group transform hover:-translate-y-2 hover:scale-105">
+              <div className="text-center p-6 glass-effect rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group transform hover:-translate-y-2 hover:scale-105 auth-enhanced-card">
                 <div className="relative glass-effect w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
                   <Zap className="h-6 w-6 text-primary " />
                   {/* <div className="absolute glass-effect top-0 left-0 rounded-xl w-full h-full opacity-0 group-hover:opacity-100 group-hover:animate-spin-clockwise-360-infinite-slow transition-all duration-300"></div> */}
@@ -163,7 +174,7 @@ const Auth = ({ initialMode }) => {
                 </p>
               </div>
 
-              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
+              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group auth-enhanced-card">
                 <div className="relative glass-effect w-12 h-12 bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
                   <Star className="h-6 w-6 text-primary group-hover:animate-spin-clockwise-360-infinite-slow transition-all duration-300" />
                 </div>
@@ -173,7 +184,7 @@ const Auth = ({ initialMode }) => {
                 </p>
               </div>
 
-              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group">
+              <div className="text-center p-6 glass-effect transform hover:-translate-y-2 hover:scale-105 rounded-2xl border border-border/20 transition-all duration-300 hover:border-primary/20 cursor-pointer group auth-enhanced-card">
                 <div className="w-12 h-12 relative glass-effect bg-gradient-to-br from-primary/20 to-primary/5 rounded-xl flex items-center justify-center mx-auto mb-4 transition-all duration-300 group-hover:from-primary/30 group-hover:to-primary/10">
                   <Shield className="h-6 w-6 text-primary" />
                 </div>
@@ -205,7 +216,7 @@ const Auth = ({ initialMode }) => {
 
           {/* Your existing form card - only inputs changed */}
           <div className="flex justify-center lg:justify-end">
-            <Card className="w-full max-w-md glass-effect border-border/20">
+            <Card className="w-full max-w-md glass-effect border-border/20 shadow-2xl backdrop-blur-xl bg-background/90 hover:bg-background/95 transition-all duration-500 auth-enhanced-card">
               <CardHeader className="text-center pb-8">
                 <CardTitle className="text-3xl font-bold bg-gradient-to-r from-primary to-accent-foreground bg-clip-text text-transparent">
                   {mode === "signin" ? "Sign In" : "Create Account"}
@@ -213,7 +224,7 @@ const Auth = ({ initialMode }) => {
                 <p className="text-muted-foreground mt-2">
                   {mode === "signin"
                     ? "Enter your credentials to access your account"
-                    : "Join ArtCanvas and start your collection today"}
+                    : "Join The Monk Lab and start your collection today"}
                 </p>
               </CardHeader>
 
@@ -368,10 +379,50 @@ const Auth = ({ initialMode }) => {
 
       <style jsx>{`
         .glass-effect {
-          backdrop-filter: blur(12px);
+          backdrop-filter: blur(8px) saturate(180%);
+          background: rgba(255, 255, 255, 0.15);
+          border: 1px solid rgba(255, 255, 255, 0.25);
+          box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+        .dark .glass-effect {
+          background: rgba(0, 0, 0, 0.25);
+          border: 1px solid rgba(255, 255, 255, 0.15);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         .glow-effect {
           box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4);
+        }
+        .auth-enhanced-card {
+          position: relative;
+          overflow: hidden;
+        }
+        .auth-enhanced-card::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.05) 50%,
+            transparent 70%
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+        .auth-enhanced-card:hover::before {
+          opacity: 1;
+        }
+        .dark .auth-enhanced-card::before {
+          background: linear-gradient(
+            45deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.03) 50%,
+            transparent 70%
+          );
         }
       `}</style>
     </div>

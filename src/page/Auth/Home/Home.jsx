@@ -101,7 +101,7 @@ function Home() {
         <div className="container mx-auto px-6 relative">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-foreground">
-              Why Choose ArtCanvas?
+              Why Choose The Monk Lab?
             </h2>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Experience the perfect blend of quality, convenience, and

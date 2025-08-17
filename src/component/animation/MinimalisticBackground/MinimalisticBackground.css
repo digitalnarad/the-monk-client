@@ -1,0 +1,1008 @@
+/* Minimalistic Theme-Aware Background */
+.minimalistic-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Primary Theme Layer */
+.theme-primary-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gradient Foundation */
+.gradient-foundation {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.foundation-gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+  animation: foundationFlow 25s ease-in-out infinite;
+}
+
+.foundation-1.light {
+  background: linear-gradient(
+    135deg,
+    hsl(271 76% 98%) 0%,
+    hsl(271 76% 95%) 25%,
+    hsl(262 83% 97%) 50%,
+    hsl(233 89% 98%) 75%,
+    hsl(271 76% 98%) 100%
+  );
+}
+
+.foundation-1.dark {
+  background: linear-gradient(
+    135deg,
+    hsl(220 14% 4%) 0%,
+    hsl(271 76% 6%) 25%,
+    hsl(262 83% 5%) 50%,
+    hsl(233 89% 6%) 75%,
+    hsl(220 14% 4%) 100%
+  );
+}
+
+.foundation-2 {
+  animation-delay: -8s;
+  animation-duration: 30s;
+  opacity: 0.4;
+}
+
+.foundation-2.light {
+  background: radial-gradient(
+      ellipse at 30% 20%,
+      hsl(271 76% 96%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse at 70% 80%, hsl(262 83% 96%) 0%, transparent 50%);
+}
+
+.foundation-2.dark {
+  background: radial-gradient(
+      ellipse at 30% 20%,
+      hsl(271 76% 8%) 0%,
+      transparent 50%
+    ),
+    radial-gradient(ellipse at 70% 80%, hsl(262 83% 7%) 0%, transparent 50%);
+}
+
+.foundation-3 {
+  animation-delay: -16s;
+  animation-duration: 35s;
+  opacity: 0.3;
+}
+
+.foundation-3.light {
+  background: conic-gradient(
+    from 45deg at 50% 50%,
+    transparent 0deg,
+    hsl(271 76% 97%) 60deg,
+    transparent 120deg,
+    hsl(262 83% 97%) 180deg,
+    transparent 240deg,
+    hsl(233 89% 97%) 300deg,
+    transparent 360deg
+  );
+}
+
+.foundation-3.dark {
+  background: conic-gradient(
+    from 45deg at 50% 50%,
+    transparent 0deg,
+    hsl(271 76% 7%) 60deg,
+    transparent 120deg,
+    hsl(262 83% 6%) 180deg,
+    transparent 240deg,
+    hsl(233 89% 7%) 300deg,
+    transparent 360deg
+  );
+}
+
+/* Subtle Depth Layers */
+.depth-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.depth-layer {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  animation: depthFloat 20s ease-in-out infinite;
+}
+
+.depth-layer-1 {
+  width: 600px;
+  height: 400px;
+  top: 10%;
+  left: -10%;
+  animation-delay: 0s;
+}
+
+.depth-layer-1.light {
+  background: radial-gradient(
+    ellipse,
+    hsl(271 76% 90% / 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.depth-layer-1.dark {
+  background: radial-gradient(
+    ellipse,
+    hsl(271 76% 20% / 0.5) 0%,
+    transparent 70%
+  );
+}
+
+.depth-layer-2 {
+  width: 500px;
+  height: 300px;
+  bottom: 15%;
+  right: -10%;
+  animation-delay: -7s;
+  animation-duration: 25s;
+}
+
+.depth-layer-2.light {
+  background: radial-gradient(
+    ellipse,
+    hsl(262 83% 90% / 0.25) 0%,
+    transparent 70%
+  );
+}
+
+.depth-layer-2.dark {
+  background: radial-gradient(
+    ellipse,
+    hsl(262 83% 25% / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+.depth-layer-3 {
+  width: 400px;
+  height: 350px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation-delay: -14s;
+  animation-duration: 30s;
+}
+
+.depth-layer-3.light {
+  background: radial-gradient(
+    ellipse,
+    hsl(233 89% 90% / 0.2) 0%,
+    transparent 70%
+  );
+}
+
+.depth-layer-3.dark {
+  background: radial-gradient(
+    ellipse,
+    hsl(233 89% 30% / 0.35) 0%,
+    transparent 70%
+  );
+}
+
+/* Enhanced Minimal Art Elements */
+.minimal-art-elements {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Animated Leaves */
+.art-leaf {
+  position: absolute;
+  width: 24px;
+  height: 36px;
+  pointer-events: none;
+  will-change: transform;
+  animation: leafSway 15s ease-in-out infinite;
+}
+
+.art-leaf::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 32px;
+  border-radius: 0 100% 80% 100%;
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+.art-leaf.light::before {
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    hsl(142 76% 75% / 0.6) 0%,
+    hsl(142 76% 65% / 0.4) 100%
+  );
+  color: hsl(142 76% 70%);
+}
+
+.art-leaf.dark::before {
+  background: radial-gradient(
+    ellipse at 30% 30%,
+    hsl(142 76% 45% / 0.7) 0%,
+    hsl(142 76% 35% / 0.5) 100%
+  );
+  color: hsl(142 76% 50%);
+}
+
+.art-leaf::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 8px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* Rotating Squares */
+.art-square {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  pointer-events: none;
+  will-change: transform;
+  animation: squareFloat 18s ease-in-out infinite,
+    squareRotate var(--rotation-duration, 20s) linear infinite;
+  border-radius: 6px;
+  filter: drop-shadow(0 0 6px currentColor);
+}
+
+.art-square.light {
+  background: radial-gradient(
+    circle at 30% 30%,
+    hsl(271 76% 80% / 0.5) 0%,
+    hsl(271 76% 70% / 0.3) 100%
+  );
+  color: hsl(271 76% 75%);
+}
+
+.art-square.dark {
+  background: radial-gradient(
+    circle at 30% 30%,
+    hsl(271 76% 50% / 0.6) 0%,
+    hsl(271 76% 40% / 0.4) 100%
+  );
+  color: hsl(271 76% 55%);
+}
+
+/* Floating Circles */
+.art-circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+  animation: circleFloat 16s ease-in-out infinite,
+    circleParallax 12s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px currentColor);
+}
+
+.art-circle.light {
+  background: radial-gradient(
+    circle at 35% 35%,
+    hsl(262 83% 85% / 0.4) 0%,
+    hsl(262 83% 75% / 0.2) 60%,
+    transparent 100%
+  );
+  color: hsl(262 83% 80%);
+}
+
+.art-circle.dark {
+  background: radial-gradient(
+    circle at 35% 35%,
+    hsl(262 83% 55% / 0.5) 0%,
+    hsl(262 83% 45% / 0.3) 60%,
+    transparent 100%
+  );
+  color: hsl(262 83% 60%);
+}
+
+/* Twinkling Stars */
+.art-star {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation: starTwinkle 14s ease-in-out infinite,
+    starSparkle 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+.art-star::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Four-point star */
+.art-star.four-point::before {
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+/* Five-point star */
+.art-star.five-point::before {
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  clip-path: polygon(
+    50% 0%,
+    61% 35%,
+    98% 35%,
+    68% 57%,
+    79% 91%,
+    50% 70%,
+    21% 91%,
+    32% 57%,
+    2% 35%,
+    39% 35%
+  );
+}
+
+.art-star.light {
+  color: hsl(233 89% 75%);
+}
+
+.art-star.dark {
+  color: hsl(233 89% 65%);
+}
+
+/* Theme Color Accents */
+.theme-color-accents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.color-accent {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.08;
+  animation: colorPulse 12s ease-in-out infinite;
+}
+
+.primary-accent {
+  width: 300px;
+  height: 300px;
+  top: 15%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.primary-accent.light {
+  background: radial-gradient(circle, hsl(271 76% 80%) 0%, transparent 70%);
+}
+
+.primary-accent.dark {
+  background: radial-gradient(circle, hsl(271 76% 40%) 0%, transparent 70%);
+}
+
+.secondary-accent {
+  width: 250px;
+  height: 250px;
+  bottom: 20%;
+  right: 20%;
+  animation-delay: -4s;
+}
+
+.secondary-accent.light {
+  background: radial-gradient(circle, hsl(262 83% 80%) 0%, transparent 70%);
+}
+
+.secondary-accent.dark {
+  background: radial-gradient(circle, hsl(262 83% 40%) 0%, transparent 70%);
+}
+
+.tertiary-accent {
+  width: 200px;
+  height: 200px;
+  top: 60%;
+  left: 60%;
+  animation-delay: -8s;
+}
+
+.tertiary-accent.light {
+  background: radial-gradient(circle, hsl(233 89% 80%) 0%, transparent 70%);
+}
+
+.tertiary-accent.dark {
+  background: radial-gradient(circle, hsl(233 89% 40%) 0%, transparent 70%);
+}
+
+/* Breathing Light Effect */
+.breathing-light {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  animation: breathe 8s ease-in-out infinite;
+}
+
+.breathing-light.light {
+  background: radial-gradient(
+    ellipse at center,
+    hsl(271 76% 95%) 0%,
+    hsl(271 76% 97%) 30%,
+    transparent 70%
+  );
+}
+
+.breathing-light.dark {
+  background: radial-gradient(
+    ellipse at center,
+    hsl(271 76% 15%) 0%,
+    hsl(271 76% 10%) 30%,
+    transparent 70%
+  );
+}
+
+/* Subtle Texture Overlay */
+.texture-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+}
+
+.texture-overlay.light {
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      hsl(271 76% 90% / 0.2) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      hsl(262 83% 90% / 0.2) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px, 60px 60px;
+}
+
+.texture-overlay.dark {
+  background-image: radial-gradient(
+      circle at 25% 25%,
+      hsl(271 76% 30% / 0.3) 1px,
+      transparent 1px
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      hsl(262 83% 30% / 0.3) 1px,
+      transparent 1px
+    );
+  background-size: 40px 40px, 60px 60px;
+}
+
+/* Secondary Refinement Layer */
+.theme-refinement-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Corner Accents */
+.corner-accents {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.corner-accent {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  opacity: 0.1;
+  animation: cornerPulse 10s ease-in-out infinite;
+}
+
+.corner-top-left {
+  top: 0;
+  left: 0;
+  animation-delay: 0s;
+}
+
+.corner-top-left.light {
+  background: linear-gradient(
+    135deg,
+    hsl(271 76% 85% / 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.corner-top-left.dark {
+  background: linear-gradient(
+    135deg,
+    hsl(271 76% 30% / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+.corner-top-right {
+  top: 0;
+  right: 0;
+  animation-delay: -2.5s;
+}
+
+.corner-top-right.light {
+  background: linear-gradient(
+    225deg,
+    hsl(262 83% 85% / 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.corner-top-right.dark {
+  background: linear-gradient(
+    225deg,
+    hsl(262 83% 30% / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+.corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  animation-delay: -5s;
+}
+
+.corner-bottom-left.light {
+  background: linear-gradient(
+    45deg,
+    hsl(233 89% 85% / 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.corner-bottom-left.dark {
+  background: linear-gradient(
+    45deg,
+    hsl(233 89% 30% / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+.corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  animation-delay: -7.5s;
+}
+
+.corner-bottom-right.light {
+  background: linear-gradient(
+    315deg,
+    hsl(271 76% 85% / 0.3) 0%,
+    transparent 70%
+  );
+}
+
+.corner-bottom-right.dark {
+  background: linear-gradient(
+    315deg,
+    hsl(271 76% 30% / 0.4) 0%,
+    transparent 70%
+  );
+}
+
+/* Minimalistic Patterns */
+.minimalistic-patterns {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+}
+
+.pattern-dots.light {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    hsl(271 76% 80% / 0.4) 2px,
+    transparent 2px
+  );
+  background-size: 80px 80px;
+  animation: patternShift 30s linear infinite;
+}
+
+.pattern-dots.dark {
+  background-image: radial-gradient(
+    circle at 50% 50%,
+    hsl(271 76% 40% / 0.5) 2px,
+    transparent 2px
+  );
+  background-size: 80px 80px;
+  animation: patternShift 30s linear infinite;
+}
+
+.pattern-lines {
+  animation: patternShift 40s linear infinite reverse;
+}
+
+.pattern-lines.light {
+  background-image: linear-gradient(
+    45deg,
+    transparent 49%,
+    hsl(262 83% 80% / 0.2) 50%,
+    transparent 51%
+  );
+  background-size: 120px 120px;
+}
+
+.pattern-lines.dark {
+  background-image: linear-gradient(
+    45deg,
+    transparent 49%,
+    hsl(262 83% 40% / 0.3) 50%,
+    transparent 51%
+  );
+  background-size: 120px 120px;
+}
+
+.pattern-waves {
+  animation: patternShift 50s linear infinite;
+}
+
+.pattern-waves.light {
+  background-image: radial-gradient(
+    ellipse 100px 20px at 50% 0%,
+    hsl(233 89% 80% / 0.2) 0%,
+    transparent 50%
+  );
+  background-size: 200px 100px;
+}
+
+.pattern-waves.dark {
+  background-image: radial-gradient(
+    ellipse 100px 20px at 50% 0%,
+    hsl(233 89% 40% / 0.3) 0%,
+    transparent 50%
+  );
+  background-size: 200px 100px;
+}
+
+/* Focus Vignette */
+.focus-vignette {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.6;
+}
+
+.focus-vignette.light {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    hsl(var(--background) / 0.1) 70%,
+    hsl(var(--background) / 0.3) 100%
+  );
+}
+
+.focus-vignette.dark {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    hsl(var(--background) / 0.2) 70%,
+    hsl(var(--background) / 0.4) 100%
+  );
+}
+
+/* Enhanced Art Element Animations */
+@keyframes leafSway {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  25% {
+    transform: translateY(-6px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-1deg);
+  }
+  75% {
+    transform: translateY(-8px) rotate(2deg);
+  }
+}
+
+@keyframes squareFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.05);
+  }
+}
+
+@keyframes squareRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes circleFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  33% {
+    transform: translateY(-5px) scale(1.02);
+  }
+  66% {
+    transform: translateY(-12px) scale(0.98);
+  }
+}
+
+@keyframes circleParallax {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(var(--parallax-intensity, 1) * 8px));
+  }
+}
+
+@keyframes starTwinkle {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+@keyframes starSparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    filter: drop-shadow(0 0 4px currentColor);
+  }
+  50% {
+    opacity: 0.8;
+    filter: drop-shadow(0 0 12px currentColor);
+  }
+}
+
+/* Existing animations preserved */
+@keyframes foundationFlow {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  25% {
+    transform: translateX(-2px) translateY(-3px) scale(1.01);
+  }
+  50% {
+    transform: translateX(1px) translateY(2px) scale(0.99);
+  }
+  75% {
+    transform: translateX(2px) translateY(-1px) scale(1.005);
+  }
+}
+
+@keyframes depthFloat {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  25% {
+    transform: translateY(-10px) scale(1.02);
+  }
+  50% {
+    transform: translateY(-5px) scale(0.98);
+  }
+  75% {
+    transform: translateY(-15px) scale(1.01);
+  }
+}
+
+@keyframes colorPulse {
+  0%,
+  100% {
+    opacity: 0.06;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.12;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.02;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 0.05;
+    transform: translate(-50%, -50%) scale(1.05);
+  }
+}
+
+@keyframes cornerPulse {
+  0%,
+  100% {
+    opacity: 0.08;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes patternShift {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(40px) translateY(40px);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .depth-layer-1 {
+    width: 400px;
+    height: 300px;
+  }
+
+  .depth-layer-2 {
+    width: 350px;
+    height: 250px;
+  }
+
+  .depth-layer-3 {
+    width: 300px;
+    height: 250px;
+  }
+
+  .color-accent {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  .art-leaf {
+    width: 20px;
+    height: 30px;
+  }
+
+  .art-square {
+    width: 28px;
+    height: 28px;
+  }
+
+  .art-circle {
+    width: 32px;
+    height: 32px;
+  }
+
+  .art-star {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .corner-accent {
+    width: 60px;
+    height: 60px;
+  }
+
+  .art-leaf {
+    width: 16px;
+    height: 24px;
+  }
+
+  .art-square {
+    width: 24px;
+    height: 24px;
+  }
+
+  .art-circle {
+    width: 28px;
+    height: 28px;
+  }
+
+  .art-star {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .minimalistic-background * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .art-star {
+    filter: none !important;
+  }
+}
+
+/* Performance Optimization */
+.art-leaf,
+.art-square,
+.art-circle,
+.art-star {
+  will-change: transform, opacity;
+}
+
+.minimalistic-background * {
+  will-change: transform, opacity;
+}

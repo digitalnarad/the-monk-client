@@ -59,7 +59,7 @@ const Cart = () => {
               to="/"
               className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent"
             >
-              ArtCanvas
+              The Monk Lab
             </Link>
           </div>
           <nav className="hidden md:flex items-center space-x-8">

@@ -7,7 +7,7 @@ import Header from "./Header";
 
 function HomeLayout() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background ">
       <Header />
       <Home />
       <About />

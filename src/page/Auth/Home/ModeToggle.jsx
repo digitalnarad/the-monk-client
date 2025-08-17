@@ -18,16 +18,13 @@ export function ModeToggle() {
         <Button
           variant="ghost"
           size="icon"
-          asChild
           className="
             transition-all duration-300
             data-[state=open]:text-primary
           "
         >
-          <div style={{ cursor: "pointer" }}>
-            <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 duration-1000" />
-            <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 duration-1000" />
-          </div>
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 duration-1000" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 duration-1000" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent

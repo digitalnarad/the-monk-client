@@ -1,11 +1,12 @@
 import { LogIn, Palette, ShoppingCart, Store } from "lucide-react";
 import { Button } from "../../../component/button";
+import { Badge } from "../../../component/badge";
 import { Link, useNavigate } from "react-router-dom";
 import { ModeToggle } from "./ModeToggle";
 
 function Header() {
   const navigate = useNavigate();
-  const itemCount = 0;
+  const itemCount = 10;
   return (
     <header className="glass-effect sticky top-0 z-50 border-b border-white/10 backdrop-blur">
       <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -15,7 +16,7 @@ function Header() {
             <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-            ArtCanvas
+            The Monk Lab
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">
@@ -48,23 +49,20 @@ function Header() {
           <Button
             variant="outline"
             size="icon"
-            asChild
             className="relative glass-effect border-primary/30 hover:border-primary hover:shadow-lg hover:shadow-primary/20 transition-all duration-300"
             onClick={() => {
               navigate("/cart");
             }}
           >
-            <div style={{ cursor: "pointer" }}>
-              <ShoppingCart className="h-5 w-5" />
-              {itemCount > 0 && (
-                <Badge
-                  variant="destructive"
-                  className="absolute -top-3 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs min-w-5"
-                >
-                  {itemCount}
-                </Badge>
-              )}
-            </div>
+            <ShoppingCart className="h-5 w-5" />
+            {itemCount > 0 && (
+              <Badge
+                variant="destructive"
+                className="absolute -top-3 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs min-w-5"
+              >
+                {itemCount}
+              </Badge>
+            )}
           </Button>
           <Button
             variant="outline"

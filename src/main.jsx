@@ -8,7 +8,7 @@ import store from "./store";
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-    <ThemeProvider defaultTheme="system" storageKey="The Monk Lab-theme">
+    <ThemeProvider defaultTheme="system">
       <BrowserRouter>
         <App />
       </BrowserRouter>

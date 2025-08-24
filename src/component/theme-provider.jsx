@@ -1,19 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
-// import PropTypes from "prop-types";
+import storage from "../services/storage";
 
 const ThemeProviderContext = createContext({
   theme: "system",
   setTheme: () => null,
 });
 
-export function ThemeProvider({
-  children,
-  defaultTheme = "system",
-  storageKey = "",
-  ...props
-}) {
+export function ThemeProvider({ children, defaultTheme = "system", ...props }) {
   const [theme, setTheme] = useState(
-    () => localStorage.getItem(storageKey) || defaultTheme
+    () => storage.get("theme") || defaultTheme
   );
 
   useEffect(() => {
@@ -35,7 +30,7 @@ export function ThemeProvider({
   const value = {
     theme,
     setTheme: (newTheme) => {
-      localStorage.setItem(storageKey, newTheme);
+      storage.set("theme", newTheme);
       setTheme(newTheme);
     },
   };

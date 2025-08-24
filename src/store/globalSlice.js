@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import api from "../services/api";
+import storage from "../services/storage";
 
 const initialState = {
   // Auth state
-  authData: null,
-  authToken: localStorage.getItem("token") || null,
+  authData: storage.get("user") || null,
+  authToken: storage.get("token") || null,
 
   // Error state
   errorData: {
@@ -19,12 +20,20 @@ const globalSlice = createSlice({
   reducers: {
     setAuthData(state, action) {
       state.authData = action.payload;
+      // Save auth data to encrypted storage
+      if (action.payload) {
+        storage.set("user", action.payload);
+      }
     },
     setErrorData(state, action) {
       state.errorData = action.payload;
     },
     setAuthToken(state, action) {
       state.authToken = action.payload;
+      // Save auth token to encrypted storage
+      if (action.payload) {
+        storage.set("token", action.payload);
+      }
     },
   },
 });
@@ -43,7 +52,7 @@ export const handelCatch = (error) => async (dispatch) => {
   if (status === 401) {
     dispatch(throwError("Session is expired"));
     dispatch(setAuthData(null));
-    localStorage.removeItem("authData");
+    storage.clear();
   } else {
     dispatch(
       setErrorData({
@@ -81,7 +90,7 @@ export const throwError = (message) => async (dispatch) => {
 export const logout = () => async (dispatch) => {
   dispatch(setAuthToken(null));
   dispatch(setAuthData(null));
-  localStorage.removeItem("token");
+  storage.clear();
 };
 
 export const verifyToken = (token) => async (dispatch) => {

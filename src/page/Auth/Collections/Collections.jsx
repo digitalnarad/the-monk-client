@@ -90,7 +90,7 @@ const Collections = () => {
               <span className="font-semibold">Back to Home</span>
             </Link>
             <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-              The Monk Lab
+              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
             </h1>
             <div className="w-20"></div>
           </div>

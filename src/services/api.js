@@ -1,7 +1,8 @@
 import axios from "axios";
+import storage from "./storage";
 
-const baseURL = "http://localhost:8000/api/v1";
-// const baseURL = "https://chat-app-server-54ar.onrender.com/api/v1";
+const baseURL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:8000/api/v1";
 
 const api = axios.create({
   baseURL: baseURL,
@@ -11,7 +12,7 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem("token"); // or Context, Redux, etc.
+    const token = storage.get("token"); // or Context, Redux, etc.
     if (token) config.headers.Authorization = `Bearer ${token ? token : ""}`;
     return config;
   },

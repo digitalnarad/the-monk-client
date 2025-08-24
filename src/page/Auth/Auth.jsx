@@ -115,7 +115,7 @@ const Auth = ({ initialMode }) => {
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-              The Monk Lab
+              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
             </span>
           </Link>
           <div className="flex items-center gap-4">
@@ -143,7 +143,7 @@ const Auth = ({ initialMode }) => {
                 variant="secondary"
                 className="mb-6 px-4 py-2 glass-effect border-primary/30 text-primary"
               >
-                ✨ Join The Monk Lab Community
+                ✨ Join {import.meta.env.VITE_APP_NAME || "The Monk Lab"} Community
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
@@ -151,7 +151,7 @@ const Auth = ({ initialMode }) => {
                 </span>
                 <br />
                 <span className="text-foreground">
-                  {mode === "signin" ? "to The Monk Lab" : "with Digital Art"}
+                  {mode === "signin" ? `to ${import.meta.env.VITE_APP_NAME || "The Monk Lab"}` : "with Digital Art"}
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -224,7 +224,7 @@ const Auth = ({ initialMode }) => {
                 <p className="text-muted-foreground mt-2">
                   {mode === "signin"
                     ? "Enter your credentials to access your account"
-                    : "Join The Monk Lab and start your collection today"}
+                    : `Join ${import.meta.env.VITE_APP_NAME || "The Monk Lab"} and start your collection today`}
                 </p>
               </CardHeader>
 

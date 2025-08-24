@@ -10,7 +10,7 @@ function Footer() {
             <div className="flex items-center space-x-2 mb-4">
               <Palette className="h-6 w-6 text-primary" />
               <span className="text-xl font-bold text-foreground">
-                The Monk Lab
+                {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
               </span>
             </div>
             <p className="text-muted-foreground">
@@ -95,7 +95,7 @@ function Footer() {
           </div>
         </div>
         <div className="border-t border-border/40 mt-8 pt-8 text-center text-muted-foreground">
-          <p>&copy; 2024 The Monk Lab. All rights reserved.</p>
+          <p>&copy; 2024 {import.meta.env.VITE_APP_NAME || "The Monk Lab"}. All rights reserved.</p>
         </div>
       </div>
     </footer>

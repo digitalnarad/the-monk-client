@@ -354,7 +354,7 @@ const Category = () => {
               to="/"
               className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60"
             >
-              The Monk Lab
+              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
             </Link>
             <div className="w-32"></div>
           </div>

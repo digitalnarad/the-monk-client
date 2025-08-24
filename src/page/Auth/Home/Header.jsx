@@ -16,7 +16,7 @@ function Header() {
             <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
           <span className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-            The Monk Lab
+            {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-8">

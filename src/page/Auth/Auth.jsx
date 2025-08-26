@@ -23,6 +23,9 @@ import ArtGalleryBackground from "../../component/animation/ArtGalleryBackground
 import AuthBackground from "../../component/animation/AuthBackground/AuthBackground";
 import MinimalisticBackground from "../../component/animation/MinimalisticBackground/MinimalisticBackground";
 import BackgroundBlend from "../../component/animation/BackgroundBlend";
+import { post } from "../../services/api";
+import { useDispatch } from "react-redux";
+import { setAuthToken, showSuccess } from "../../store/globalSlice";
 
 // Your existing validation schemas
 const signInSchema = Yup.object({
@@ -30,7 +33,7 @@ const signInSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
+    .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
 });
 
@@ -45,7 +48,7 @@ const signUpSchema = Yup.object({
     .email("Invalid email address")
     .required("Email is required"),
   password: Yup.string()
-    .min(6, "Password must be at least 6 characters")
+    .min(8, "Password must be at least 8 characters")
     .required("Password is required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
@@ -59,6 +62,7 @@ const signUpSchema = Yup.object({
 const Auth = ({ initialMode }) => {
   const navigate = useNavigate();
   const [mode, setMode] = useState(initialMode);
+  const dispatch = useDispatch();
 
   const formik = useFormik({
     initialValues: {
@@ -71,19 +75,34 @@ const Auth = ({ initialMode }) => {
     },
     validationSchema: mode === "signin" ? signInSchema : signUpSchema,
     onSubmit: async (values, { setSubmitting }) => {
-      setSubmitting(true);
-      const signInData = { email: values.email, password: values.password };
-      const signUpData = {
-        fName: values.fName,
-        lName: values.lName,
-        email: values.email,
-        password: values.password,
-        confirmPassword: values.confirmPassword,
-        termsAccepted: values.termsAccepted,
-      };
-      const formData = mode === "signin" ? signInData : signUpData;
-      console.log(`${mode} data:`, formData);
-      setTimeout(() => setSubmitting(false), 2000);
+      console.log("values", values);
+      try {
+        setSubmitting(true);
+        const req = {
+          email: values.email,
+          password: values.password,
+          ...(mode !== "signin" && {
+            fName: values.fName,
+            lName: values.lName,
+            isTermsAccepted: values.termsAccepted,
+          }),
+        };
+
+        const res = await post(
+          `/auth/${mode === "signin" ? "login" : "signup"}`,
+          req
+        );
+        if ([200, 201].includes(res?.status)) {
+          const data = res?.payload?.response;
+          dispatch(setAuthToken(data?.token));
+          dispatch(showSuccess(res?.data?.message));
+          navigate("/signin", { replace: true });
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        setSubmitting(false);
+      }
     },
   });
 
@@ -143,7 +162,8 @@ const Auth = ({ initialMode }) => {
                 variant="secondary"
                 className="mb-6 px-4 py-2 glass-effect border-primary/30 text-primary"
               >
-                ✨ Join {import.meta.env.VITE_APP_NAME || "The Monk Lab"} Community
+                ✨ Join {import.meta.env.VITE_APP_NAME || "The Monk Lab"}{" "}
+                Community
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
                 <span className="bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
@@ -151,7 +171,9 @@ const Auth = ({ initialMode }) => {
                 </span>
                 <br />
                 <span className="text-foreground">
-                  {mode === "signin" ? `to ${import.meta.env.VITE_APP_NAME || "The Monk Lab"}` : "with Digital Art"}
+                  {mode === "signin"
+                    ? `to ${import.meta.env.VITE_APP_NAME || "The Monk Lab"}`
+                    : "with Digital Art"}
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
@@ -224,7 +246,9 @@ const Auth = ({ initialMode }) => {
                 <p className="text-muted-foreground mt-2">
                   {mode === "signin"
                     ? "Enter your credentials to access your account"
-                    : `Join ${import.meta.env.VITE_APP_NAME || "The Monk Lab"} and start your collection today`}
+                    : `Join ${
+                        import.meta.env.VITE_APP_NAME || "The Monk Lab"
+                      } and start your collection today`}
                 </p>
               </CardHeader>
 

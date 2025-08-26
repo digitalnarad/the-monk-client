@@ -6,6 +6,7 @@ function UserRouter() {
   return (
     <Routes>
       <Route path="/" element={<div>home/</div>} />
+      <Route path="/cart" element={<Cart />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

@@ -12,7 +12,6 @@ function AuthRouter() {
       <Route path="/home" element={<Home />} />
       <Route path="/collection" element={<Collections />} />
       <Route path="/collection/:categoryId" element={<Category />} />
-      <Route path="/cart" element={<Cart />} />
       <Route path="/signin" element={<Auth initialMode="signin" />} />
       <Route path="/signup" element={<Auth initialMode="signup" />} />
 

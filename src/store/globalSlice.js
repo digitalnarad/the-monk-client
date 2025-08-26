@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import api from "../services/api";
+import api, { get } from "../services/api";
 import storage from "../services/storage";
 
 const initialState = {
   // Auth state
-  authData: storage.get("user") || null,
-  authToken: storage.get("token") || null,
+  authData: storage.get("user"),
+  authToken: storage.get("token"),
 
   // Error state
   errorData: {
@@ -96,8 +96,9 @@ export const logout = () => async (dispatch) => {
 export const verifyToken = (token) => async (dispatch) => {
   try {
     if (!token) return;
-    const res = await api.get("/user/token-verification");
+    const res = await get("/auth/me");
     if (res.status === 200) {
+      console.log("res", res);
       dispatch(setAuthToken(token));
       dispatch(setAuthData(res?.data?.response));
       return;

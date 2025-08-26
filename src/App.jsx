@@ -1,19 +1,23 @@
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AuthRouter from "./router/AuthRouter";
 import UserRouter from "./router/UserRouter";
 import { verifyToken } from "./store/globalSlice";
+import storage from "./services/storage";
 
 function App() {
   const dispatch = useDispatch();
   const { authToken, authData } = useSelector((state) => state.global);
 
-  // Check if user is authenticated (has both token and auth data)
   const isAuthenticated = Boolean(authToken && authData);
 
   // Verify token on app load
   useEffect(() => {
+    console.log("authData", authData);
+    console.log("authToken", authToken);
+    const token = storage.get("token");
+    console.log("token", token);
     if (authToken && !authData) {
       dispatch(verifyToken(authToken));
     }
@@ -21,7 +25,7 @@ function App() {
 
   return (
     <div className="App">
-      {isAuthenticated ? <UserRouter /> : <AuthRouter />}
+      {authData?._id && isAuthenticated ? <UserRouter /> : <AuthRouter />}
     </div>
   );
 }

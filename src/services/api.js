@@ -20,7 +20,12 @@ api.interceptors.request.use(
 );
 
 api.interceptors.response.use(
-  (res) => res,
+  (res) => {
+    return {
+      status: res.status,
+      payload: res.data,
+    };
+  },
   (error) => {
     return Promise.reject(error);
   }
@@ -33,4 +38,5 @@ const put = (url, data = {}, config = {}) => api.put(url, data, config);
 const del = (url, config = {}) => api.delete(url, config);
 
 // Export them in whatever shape you like
-export default { get, post, put, delete: del };
+export { get, post, put, del };
+export default api;

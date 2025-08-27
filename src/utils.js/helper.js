@@ -30,16 +30,20 @@ export const encrypt = (data) => {
 
 export const decrypt = (encryptedData) => {
   try {
+    if (!encryptedData || typeof encryptedData !== 'string') {
+      return null;
+    }
+
     const decrypted = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
     const jsonString = decrypted.toString(CryptoJS.enc.Utf8);
-    
+
     if (!jsonString) {
       return null;
     }
-    
-    return JSON.parse(jsonString);
+
+    return jsonString;
   } catch (error) {
-    console.error('Decryption error:', error);
+    console.warn('Decryption error:', error);
     return null;
   }
 };

@@ -1,10 +1,9 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import Home from "../page/Auth/Home";
 import Category from "../page/Auth/Collections/Category";
 import Collections from "../page/Auth/Collections";
-import Cart from "../page/User/Cart";
 import Auth from "../page/Auth/Auth";
+import Home from "../page/Auth/Home";
 
 function AuthRouter() {
   return (

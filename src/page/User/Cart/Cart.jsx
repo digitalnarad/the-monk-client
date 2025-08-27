@@ -7,15 +7,15 @@ import {
   ArrowLeft,
   Palette,
 } from "lucide-react";
-import { ModeToggle } from "../../Auth/Home/ModeToggle";
+import { ModeToggle } from "../../../component/ModeToggle";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
-} from "../../../component/card";
-import { Button } from "../../../component/button";
-import { Badge } from "../../../component/badge";
+} from "../../../component/ui/card";
+import { Button } from "../../../component/ui/button";
+import { Badge } from "../../../component/ui/badge";
 
 const Cart = () => {
   const { state } = {};

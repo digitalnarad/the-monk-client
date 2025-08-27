@@ -13,12 +13,17 @@ import {
   Shield,
   Zap,
 } from "lucide-react";
-import { ModeToggle } from "./Home/ModeToggle";
-import { Card, CardContent, CardHeader, CardTitle } from "../../component/card";
-import { Button } from "../../component/button";
-import { Label } from "../../component/label";
-import { Badge } from "../../component/badge";
-import { GalleryInput } from "../../component/input";
+import { ModeToggle } from "../../component/ModeToggle";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../../component/ui/card";
+import { Button } from "../../component/ui/button";
+import { Label } from "../../component/ui/label";
+import { Badge } from "../../component/ui/badge";
+import { GalleryInput } from "../../component/ui/input";
 import ArtGalleryBackground from "../../component/animation/ArtGalleryBackground";
 import AuthBackground from "../../component/animation/AuthBackground/AuthBackground";
 import MinimalisticBackground from "../../component/animation/MinimalisticBackground/MinimalisticBackground";
@@ -92,6 +97,7 @@ const Auth = ({ initialMode }) => {
           `/auth/${mode === "signin" ? "login" : "signup"}`,
           req
         );
+        console.log("res", res);
         if ([200, 201].includes(res?.status)) {
           const data = res?.payload?.response;
           dispatch(setAuthToken(data?.token));
@@ -114,40 +120,13 @@ const Auth = ({ initialMode }) => {
   };
 
   return (
-    <div className="min-h-screen  relative">
+    <div className="h-screen  relative">
       {/* Art Gallery Minimalistic Background */}
 
       <div className="absolute top-0 left-0 w-full h-full z-[-1]">
         <MinimalisticBackground />
         <ArtGalleryBackground />
       </div>
-
-      {/* Your existing header - unchanged */}
-      <header
-        className=""
-        style={{ height: "5rem", backdropFilter: `blur(8px) saturate(180%)` }}
-      >
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <Link to="/" className="flex items-center space-x-3 group">
-            <div className="relative">
-              <Palette className="h-8 w-8 text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent">
-              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
-            </span>
-          </Link>
-          <div className="flex items-center gap-4">
-            <ModeToggle />
-            <Link to="/">
-              <Button variant="ghost" size="sm" className="hover:bg-accent/10">
-                <ArrowLeft className="h-4 w-4 mr-2" />
-                Back to Home
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </header>
 
       {/* Your existing main content - unchanged */}
       <div
@@ -400,55 +379,6 @@ const Auth = ({ initialMode }) => {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        .glass-effect {
-          backdrop-filter: blur(8px) saturate(180%);
-          background: rgba(255, 255, 255, 0.15);
-          border: 1px solid rgba(255, 255, 255, 0.25);
-          box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
-        }
-        .dark .glass-effect {
-          background: rgba(0, 0, 0, 0.25);
-          border: 1px solid rgba(255, 255, 255, 0.15);
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        .glow-effect {
-          box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.4);
-        }
-        .auth-enhanced-card {
-          position: relative;
-          overflow: hidden;
-        }
-        .auth-enhanced-card::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(
-            45deg,
-            transparent 30%,
-            rgba(255, 255, 255, 0.05) 50%,
-            transparent 70%
-          );
-          opacity: 0;
-          transition: opacity 0.3s ease;
-          pointer-events: none;
-        }
-        .auth-enhanced-card:hover::before {
-          opacity: 1;
-        }
-        .dark .auth-enhanced-card::before {
-          background: linear-gradient(
-            45deg,
-            transparent 30%,
-            rgba(255, 255, 255, 0.03) 50%,
-            transparent 70%
-          );
-        }
-      `}</style>
     </div>
   );
 };

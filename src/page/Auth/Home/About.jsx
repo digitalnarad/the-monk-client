@@ -1,7 +1,7 @@
 import React from "react";
-import { Card, CardContent } from "../../../component/card";
-import { Button } from "../../../component/button";
-import { Badge } from "../../../component/badge";
+import { Card, CardContent } from "../../../component/ui/card";
+import { Button } from "../../../component/ui/button";
+import { Badge } from "../../../component/ui/badge";
 import { Palette, Star } from "lucide-react";
 
 function About() {

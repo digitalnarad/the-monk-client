@@ -97,14 +97,12 @@ export const verifyToken = (token) => async (dispatch) => {
   try {
     if (!token) return;
     const res = await get("/auth/me");
-    if (res.status === 200) {
-      console.log("res", res);
-      dispatch(setAuthToken(token));
-      dispatch(setAuthData(res?.data?.response));
-      return;
+    if (res.status !== 200) {
+      dispatch(throwError(res?.payload?.message));
+      dispatch(logout());
+      return null;
     }
-    dispatch(throwError(res.data.message));
-    dispatch(logout(null));
+    dispatch(setAuthData(res?.payload?.response?.user));
   } catch (error) {
     dispatch(handelCatch(error));
     dispatch(logout(null));

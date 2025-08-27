@@ -3,12 +3,11 @@ import About from "./About";
 import ContactUs from "./ContactUs";
 import Footer from "./Footer";
 import Home from "./Home";
-import Header from "./Header";
+import Header from "../../../component/Header";
 
 function HomeLayout() {
   return (
     <div className="min-h-screen bg-background ">
-      <Header />
       <Home />
       <About />
       <ContactUs />

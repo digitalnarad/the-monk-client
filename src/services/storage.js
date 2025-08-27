@@ -7,9 +7,14 @@ const storage = {
     try {
       const encryptedData = localStorage.getItem("auth");
       if (!encryptedData) return null;
-      const storData = JSON.parse(decrypt(encryptedData));
-      return storData[key];
+
+      const decryptedData = decrypt(encryptedData);
+      if (!decryptedData) return null;
+
+      const storData = JSON.parse(decryptedData);
+      return storData && storData[key] ? storData[key] : null;
     } catch (error) {
+      console.warn("Storage get error:", error);
       return null;
     }
   },
@@ -19,16 +24,24 @@ const storage = {
     if (!key) return false;
     try {
       const encryptedData = localStorage.getItem("auth");
-      const storData = JSON.parse(decrypt(encryptedData));
+      let storData = {};
 
-      const updatedData = { ...(storData ? storData : {}), [key]: data };
+      if (encryptedData) {
+        const decryptedData = decrypt(encryptedData);
+        if (decryptedData) {
+          storData = JSON.parse(decryptedData);
+        }
+      }
 
-      const encryptedUpdatedData = encrypt(JSON.stringify(updatedData));
+      const updatedData = { ...storData, [key]: data };
+
+      const encryptedUpdatedData = encrypt(updatedData);
       if (!encryptedUpdatedData) return false;
 
       localStorage.setItem("auth", encryptedUpdatedData);
       return true;
     } catch (error) {
+      console.warn("Storage set error:", error);
       return false;
     }
   },
@@ -38,7 +51,7 @@ const storage = {
     try {
       localStorage.clear();
       const now = new Date();
-      localStorage.setItem("time", encrypt(JSON.stringify(now)));
+      localStorage.setItem("time", JSON.stringify(now));
       return true;
     } catch (error) {
       console.error("Storage clear error:", error);

@@ -1,10 +1,7 @@
 import { Shield, Star, Truck } from "lucide-react";
-import { Button } from "../../../component/button";
-import { Badge } from "../../../component/badge";
-import { Card, CardContent } from "../../../component/card";
-import ShinyText from "../../../component/animation/ShinyText";
-import TextType from "../../../component/animation/TextType";
-import GradientText from "../../../component/animation/GradientText";
+import { Button } from "../../../component/ui/button";
+import { Badge } from "../../../component/ui/badge";
+import { Card, CardContent } from "../../../component/ui/card";
 
 function Home() {
   return (

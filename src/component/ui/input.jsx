@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { cn } from "../utils.js/helper";
-import { Eye, EyeClosed, EyeOff, Zap } from "lucide-react";
+import { cn } from "../../utils.js/helper";
+import { Eye, EyeOff } from "lucide-react";
 import { Button } from "./button";
+import "../../assets/css/component/input.css";
 
 // Your existing Input component - unchanged
 const Input = React.forwardRef(({ className, type, ...props }, ref) => {
@@ -25,7 +26,6 @@ const GalleryInput = React.forwardRef(
   ({ className, label, error, icon, value, type, ...props }, ref) => {
     const [focused, setFocused] = useState(false);
     const [hasValue, setHasValue] = useState(false);
-
     const [visiblePassword, setVisiblePassword] = useState(false);
 
     // Check for value on every render and value prop change
@@ -122,19 +122,14 @@ const GalleryInput = React.forwardRef(
                 variant="ghost"
                 type="button"
                 size="icon"
-                className="absolute top-1/2 right-0 transform -translate-y-1/2 transition-all duration-300 data-[state=open]:text-primary"
+                className="absolute top-1/2 right-0 transform -translate-y-1/2 transition-all duration-300"
                 onClick={() => setVisiblePassword(!visiblePassword)}
               >
-                <Eye
-                  className={`absolute rotate-0 scale-0 transition-all duration-300 ${
-                    !visiblePassword && "-rotate-180 scale-100"
-                  }`}
-                />
-                <EyeOff
-                  className={` absolute rotate-0 scale-0 transition-all duration-300 ${
-                    visiblePassword && "-rotate-180 scale-100"
-                  }`}
-                />
+                {visiblePassword ? (
+                  <EyeOff className="h-4 w-4" />
+                ) : (
+                  <Eye className="h-4 w-4" />
+                )}
               </Button>
             )}
 
@@ -166,29 +161,6 @@ const GalleryInput = React.forwardRef(
             {error}
           </li>
         )}
-
-        {/* Autofill Styles */}
-        <style jsx>{`
-          .autofill-transparent:-webkit-autofill,
-          .autofill-transparent:-webkit-autofill:hover,
-          .autofill-transparent:-webkit-autofill:focus,
-          .autofill-transparent:-webkit-autofill:active {
-            -webkit-box-shadow: 0 0 0 30px transparent inset !important;
-            -webkit-background-clip: text !important;
-            background-color: transparent !important;
-            background-image: none !important;
-            transition: background-color 5000s ease-in-out 0s;
-          }
-
-          .autofill-transparent:-webkit-autofill {
-            -webkit-text-fill-color: hsl(var(--foreground)) !important;
-          }
-
-          .autofill-transparent:-moz-autofill {
-            background-color: transparent !important;
-            background-image: none !important;
-          }
-        `}</style>
       </div>
     );
   }

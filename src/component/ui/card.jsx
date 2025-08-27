@@ -1,5 +1,5 @@
 import React from "react";
-import { cn } from "../utils.js/helper";
+import { cn } from "../../utils.js/helper";
 
 // Main Card container
 const Card = React.forwardRef(({ className, ...props }, ref) => (

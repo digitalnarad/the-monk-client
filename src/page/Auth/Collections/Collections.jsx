@@ -9,8 +9,8 @@ import {
   Palette,
   Camera,
 } from "lucide-react";
-import { Button } from "../../../component/button";
-import { Card } from "../../../component/card";
+import { Button } from "../../../component/ui/button";
+import { Card } from "../../../component/ui/card";
 
 const categories = [
   {
@@ -74,32 +74,10 @@ const Collections = () => {
   console.log("category", category);
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/90 to-primary/5">
-      {/* Aurora Background */}
       <div className="fixed inset-0 opacity-20">
         <div className="aurora-bg"></div>
       </div>
-      {/* Header */}
-      <header className="relative z-10 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link
-              to="/"
-              className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
-            >
-              <ArrowLeft size={20} />
-              <span className="font-semibold">Back to Home</span>
-            </Link>
-            <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60">
-              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
-            </h1>
-            <div className="w-20"></div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
       <main className="relative z-10 container mx-auto px-4 py-12">
-        {/* Page Header */}
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
             <Image size={16} />
@@ -114,7 +92,6 @@ const Collections = () => {
           </p>
         </div>
 
-        {/* Categories Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {categories.map((category) => {
             const IconComponent = category.icon;
@@ -158,7 +135,6 @@ const Collections = () => {
           })}
         </div>
 
-        {/* Call to Action */}
         <div className="mt-20 text-center">
           <Card className="glass-effect border-border/50 p-12 max-w-2xl mx-auto">
             <h2 className="text-3xl font-bold mb-4">

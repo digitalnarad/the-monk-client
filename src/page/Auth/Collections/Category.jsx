@@ -1,9 +1,9 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, Heart, Download, Filter, Grid, List } from "lucide-react";
 import { useState } from "react";
-import { Badge } from "../../../component/badge";
-import { Button } from "../../../component/button";
-import { Card } from "../../../component/card";
+import { Badge } from "../../../component/ui/badge";
+import { Button } from "../../../component/ui/button";
+import { Card } from "../../../component/ui/card";
 
 // Sample artwork data for each category
 const categoryData = {
@@ -334,32 +334,9 @@ const Category = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-background/90 to-primary/5">
-      {/* Aurora Background */}
       <div className="fixed inset-0 opacity-20">
         <div className="aurora-bg"></div>
       </div>
-
-      {/* Header */}
-      <header className="relative z-10 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <Link
-              to="/collections"
-              className="flex items-center gap-2 text-primary hover:opacity-80 transition-opacity"
-            >
-              <ArrowLeft size={20} />
-              <span className="font-semibold">Back to Collections</span>
-            </Link>
-            <Link
-              to="/"
-              className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/60"
-            >
-              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
-            </Link>
-            <div className="w-32"></div>
-          </div>
-        </div>
-      </header>
 
       {/* Category Header */}
       <section className="relative z-10 py-16">

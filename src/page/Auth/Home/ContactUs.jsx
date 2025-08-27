@@ -1,6 +1,6 @@
 import React from "react";
-import { Badge } from "../../../component/badge";
-import { Button } from "../../../component/button";
+import { Badge } from "../../../component/ui/badge";
+import { Button } from "../../../component/ui/button";
 import { Shield, Star, Truck } from "lucide-react";
 
 function ContactUs() {

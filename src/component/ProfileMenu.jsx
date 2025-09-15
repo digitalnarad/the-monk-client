@@ -31,7 +31,7 @@ function ProfileMenu() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        align="end"
+        align="center"
         className="glass-effect border-primary/30 bg-background/95 backdrop-blur-md"
       >
         <DropdownMenuItem

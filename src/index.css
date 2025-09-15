@@ -222,6 +222,93 @@
     }
   }
 
+  /* Crazy Mobile Menu Animations */
+  @keyframes slideInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-100px) scale(0.8) rotate(-10deg);
+    }
+    50% {
+      transform: translateX(10px) scale(1.05) rotate(2deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes slideInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(100px) scale(0.8) rotate(10deg);
+    }
+    50% {
+      transform: translateX(-10px) scale(1.05) rotate(-2deg);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1) rotate(0deg);
+    }
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    50% {
+      transform: translateY(-5px) scale(1.02);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  @keyframes crazyFloat {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-15px) rotate(5deg) scale(1.1);
+    }
+    50% {
+      transform: translateY(-30px) rotate(-3deg) scale(0.95);
+    }
+    75% {
+      transform: translateY(-10px) rotate(8deg) scale(1.05);
+    }
+  }
+
+  @keyframes wildSpin {
+    0% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(90deg) scale(1.2); }
+    50% { transform: rotate(180deg) scale(0.8); }
+    75% { transform: rotate(270deg) scale(1.1); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+
+  @keyframes elasticBounce {
+    0% {
+      transform: scale(1);
+    }
+    20% {
+      transform: scale(1.15);
+    }
+    40% {
+      transform: scale(0.95);
+    }
+    60% {
+      transform: scale(1.05);
+    }
+    80% {
+      transform: scale(0.98);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
   .shimmer {
     background: linear-gradient(
       90deg,

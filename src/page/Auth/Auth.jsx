@@ -120,7 +120,7 @@ const Auth = ({ initialMode }) => {
   };
 
   return (
-    <div className="h-screen  relative">
+    <div className="relative" style={{ height: "calc(100vh - 75px)" }}>
       {/* Art Gallery Minimalistic Background */}
 
       <div className="absolute top-0 left-0 w-full h-full z-[-1]">

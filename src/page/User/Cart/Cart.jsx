@@ -45,57 +45,8 @@ const Cart = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className=" bg-background" style={{ height: "calc(100vh - 75px)" }}>
       {/* Header */}
-      <header className="glass-effect sticky top-0 z-50 border-b border-white/10">
-        <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center space-x-3 group">
-            <div className="relative">
-              <Palette className="h-8 w-8 text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-12" />
-              <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            </div>
-            <Link
-              to="/"
-              className="text-2xl font-bold bg-gradient-to-r from-primary via-primary to-accent-foreground bg-clip-text text-transparent"
-            >
-              {import.meta.env.VITE_APP_NAME || "The Monk Lab"}
-            </Link>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link
-              to="/"
-              className="relative text-foreground hover:text-primary transition-all duration-300 group"
-            >
-              Home
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <Link
-              to="/collections"
-              className="relative text-foreground hover:text-primary transition-all duration-300 group"
-            >
-              Collections
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </Link>
-            <a
-              href="/#gallery"
-              className="relative text-foreground hover:text-primary transition-all duration-300 group"
-            >
-              Gallery
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
-          </nav>
-          <div className="flex items-center gap-4">
-            <ModeToggle />
-            <Badge
-              variant="secondary"
-              className="glass-effect border-primary/30 text-primary"
-            >
-              <ShoppingCart className="w-4 h-4 mr-2" />
-              {item.length} items
-            </Badge>
-          </div>
-        </div>
-      </header>
 
       <div className="container mx-auto px-6 py-12">
         {/* Back Button */}
